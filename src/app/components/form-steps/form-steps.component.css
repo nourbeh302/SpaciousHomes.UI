@@ -1,0 +1,11 @@
+span {
+  background: var(--grey-input);
+  width: 25%;
+
+  height: 6px;
+  border-radius: 16px;
+}
+
+span.step-active {
+  background: var(--blue-base);
+}
