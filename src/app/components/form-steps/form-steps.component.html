@@ -1,4 +1,4 @@
-<span class="step-active"></span>
-<span></span>
-<span></span>
-<span></span>
+<span [class]="url.includes('createRole') ? 'step-active' : ''"></span>
+<span [class]="url.includes('createUser') ? 'step-active' : ''"></span>
+<span [class]="url.includes('additionalInfo') ? 'step-active' : ''"></span>
+<span [class]="url.includes('uploadProfileImage') ? 'step-active' : ''"></span>

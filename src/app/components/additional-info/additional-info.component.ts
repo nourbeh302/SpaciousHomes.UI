@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-additional-info',
@@ -7,7 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdditionalInfoComponent implements OnInit {
 
-  constructor() { }
+  @Input() user: User = new User()
+
+  constructor() { 
+    this.user.userId = ""
+    this.user.email = ""
+    this.user.password = ""
+    this.user.firstName = ""
+    this.user.lastName = ""
+    this.user.role = ""
+  }
 
   ngOnInit(): void {
   }

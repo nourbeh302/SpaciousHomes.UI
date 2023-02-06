@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, RouterOutlet, Routes } from '@angular/router';
 
 import { RegisterComponent } from './pages/register/register.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
@@ -19,7 +19,7 @@ const routes: Routes = [
       { path: "uploadProfileImage", component: UploadProfileImageComponent, },
     ]
   },
-  { path: "", redirectTo: "register/createRole", pathMatch: "full" },
+  { path: "", redirectTo: "register/createRole", pathMatch: "full" }, // Homepage
   { path: "**", component: NotFoundComponent } // Not Found page
 ];
 
