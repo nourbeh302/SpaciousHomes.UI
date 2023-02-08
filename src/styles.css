@@ -47,7 +47,8 @@ a {
 /*#region Typography */
 
 * {
-  font-family: var(--font-default);
+  /* font-family: var(--font-default); */
+  font-family: sans-serif;
   font-weight: 500;
 }
 

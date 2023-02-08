@@ -17,10 +17,16 @@ export class CreateRoleComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.user = this.userService.getUser()
+    console.log(this.user); //
   }
 
   assignRole(role: string) {
     this.userService.setRole(role)
+    this.navigateToCreateUserPage() // Go to next step
+  }
+  
+  navigateToCreateUserPage() {
     this.route.navigate(['/register/createUser'], { state: this.user })
   }
 

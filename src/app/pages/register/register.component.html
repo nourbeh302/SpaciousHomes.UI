@@ -1,5 +1,16 @@
-<div class="form-layout">
+<!-- <div class="form-layout">
   <form action="#" #form="ngForm" id="register">
+    <router-outlet></router-outlet>
+    <app-form-steps [steps]="steps"></app-form-steps>
+  </form>
+</div> -->
+
+<div class="flex-container">
+  <form action="#" class="form-layout">
+    <div class="form-title">
+      <h2 class="display display-02 text-uppercase text-center font-normal color-black">Explore new houses</h2>
+      <p class="display-05 text-center font-normal color-grey">Be the first to have the full experience of finding for your perfect home</p>
+    </div>
     <router-outlet></router-outlet>
     <app-form-steps [steps]="steps"></app-form-steps>
   </form>

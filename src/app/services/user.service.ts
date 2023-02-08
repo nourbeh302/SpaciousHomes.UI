@@ -25,4 +25,16 @@ export class UserService {
   setPassword(password: string): void {
     this.user.password = password
   }
+
+  setFirstName(firstName: string): void {
+    this.user.firstName = firstName
+  }
+
+  setLastName(lastName: string): void {
+    this.user.lastName = lastName
+  }
+
+  setArea(area: string): void {
+    this.user.area = area
+  }
 }

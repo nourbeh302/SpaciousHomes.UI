@@ -5,6 +5,8 @@ export class User {
   firstName: string
   lastName: string
   role: string
+  area: string
+  profileImage: string
 
   constructor() {
     this.userId = ""
@@ -13,6 +15,7 @@ export class User {
     this.firstName = ""
     this.lastName = ""
     this.role = ""
-
+    this.area = ""
+    this.profileImage = ""
   }
 }
