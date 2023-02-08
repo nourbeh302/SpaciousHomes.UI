@@ -12,6 +12,7 @@ export class UploadProfileImageComponent implements OnInit {
 
   @Input() user: User = new User()
 
+
   constructor(private userService: UserService, private route: Router) { 
     this.user.userId = ""
     this.user.email = ""
@@ -19,6 +20,7 @@ export class UploadProfileImageComponent implements OnInit {
     this.user.firstName = ""
     this.user.lastName = ""
     this.user.role = ""
+    this.user.profileImage = ""
   }
 
   ngOnInit(): void {
@@ -30,6 +32,16 @@ export class UploadProfileImageComponent implements OnInit {
   }
 
   submitCreateUserForm() {
+    
+  }
+
+  onImgSelected(event)  {
+
+    let reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (e :any) => {
+      this.user.profileImage = e.target.result;
+    }
     
   }
 

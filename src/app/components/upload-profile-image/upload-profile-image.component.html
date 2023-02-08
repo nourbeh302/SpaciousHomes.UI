@@ -1,4 +1,8 @@
-<p>upload-profile-image works!</p>
+<img [src]="user.profileImage">
+<input type="file" (change)="onImgSelected($event)">
+
+
 <a routerLink="../additionalInfo">
   <button>Back</button>
 </a>
+
