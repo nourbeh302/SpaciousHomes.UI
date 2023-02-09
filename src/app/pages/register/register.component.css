@@ -92,8 +92,8 @@
 }
 
 .form-layout {
-  padding: 32px 16px;
-  width: min(540px, 100%);
+  padding: 32px;
+  width: min(640px, 100%);
   min-height: 100vh;
   
   display: flex;
@@ -101,7 +101,7 @@
 }
 
 .form-title p {
-  margin-block: 4px 32px;
+  margin-block: 4px 48px;
 }
 
 app-form-steps {

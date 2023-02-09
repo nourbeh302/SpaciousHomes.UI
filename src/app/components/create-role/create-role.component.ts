@@ -23,11 +23,19 @@ export class CreateRoleComponent implements OnInit {
 
   assignRole(role: string) {
     this.userService.setRole(role)
-    this.navigateToCreateUserPage() // Go to next step
+    // Go to next step
+    if (role == 'Enterprise'.toLocaleLowerCase())
+      this.navigateToCreateEnterpriseUserPage() 
+    else
+      this.navigateToCreateUserPage()
   }
   
   navigateToCreateUserPage() {
     this.route.navigate(['/register/createUser'], { state: this.user })
+  }
+  
+  navigateToCreateEnterpriseUserPage() {
+    this.route.navigate(['/register/createEnterpriseUser'], { state: this.user })
   }
 
 }

@@ -32,7 +32,6 @@ body {
 img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
 :is(label, button) {
@@ -47,8 +46,7 @@ a {
 /*#region Typography */
 
 * {
-  /* font-family: var(--font-default); */
-  font-family: sans-serif;
+  font-family: var(--font-default);
   font-weight: 500;
 }
 
@@ -82,7 +80,7 @@ a {
 }
 
 .font-normal {
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .font-light {
@@ -107,6 +105,10 @@ a {
   color: var(--grey-base);
 }
 
+.color-white {
+  color: var(--white-base);
+}
+
 .color-blue {
   color: var(--blue-base);
 }
@@ -114,3 +116,46 @@ a {
 .color-black {
   color: var(--black-base);
 }
+
+/*#endregion */
+
+/*#region Buttons */
+
+button {
+  border: none;
+  border-radius: 4px;
+  padding: 12px 32px;
+  
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  transition: all 250ms ease-in;
+}
+
+.button-primary {
+  background: var(--blue-base);
+}
+
+.button-primary:disabled {
+  cursor: not-allowed;
+  background: var(--grey-base);
+}
+
+.button-primary:not(:disabled):hover {
+  background: var(--blue-hover);
+}
+
+.button-secondary {
+  color: var(--black-base);
+}
+
+.button-secondary svg path {
+  fill: var(--black-base);
+}
+
+.button-secondary:not(:disabled):hover {
+  box-shadow: 0px 0px 0px 1.6px var(--black-base) inset;
+}
+
+/*#endregion */
