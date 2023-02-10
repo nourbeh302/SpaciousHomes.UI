@@ -11,38 +11,33 @@ import { UserService } from 'src/app/services/user.service';
 export class UploadProfileImageComponent implements OnInit {
 
   @Input() user: User = new User()
+  stepCounter: number = 3
 
-
-  constructor(private userService: UserService, private route: Router) { 
-    this.user.userId = ""
-    this.user.email = ""
-    this.user.password = ""
-    this.user.firstName = ""
-    this.user.lastName = ""
-    this.user.role = ""
+  constructor(private userService: UserService, private route: Router) {
     this.user.profileImage = ""
   }
 
   ngOnInit(): void {
     this.user = this.userService.getUser()
-    if (!this.user.role) 
+    if (!this.user.role)
       this.route.navigate(['/register/createRole'])
-      
-    console.log(this.user); //
   }
 
-  submitCreateUserForm() {
-    
+  assignProfileImage(profileImage: string): void {
+    this.userService.setProfileImage(profileImage)
   }
 
-  onImgSelected(event)  {
-
-    let reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]);
-    reader.onload = (e :any) => {
-      this.user.profileImage = e.target.result;
+  onImgSelected(event): void {
+    if (event.target.files) {
+      let reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => this.user.profileImage = e.target.result
     }
-    
+  }
+
+  createUser(): void {
+    this.assignProfileImage(this.user.profileImage)
+    console.log(this.user);
   }
 
 }

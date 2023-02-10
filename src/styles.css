@@ -189,3 +189,76 @@ button {
 }
 
 /*#endregion */
+
+/*#region Forms */
+
+.form-group {
+  margin-bottom: 32px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.form-field:has(.form-input input[required]) label::after {
+  content: "*";
+  display: inline;
+  color: var(--danger-base);
+  margin-left: 4px;
+  font-size: large;
+}
+
+.form-input {
+  width: 100%;
+  margin-block: 4px;
+  box-shadow: 0px 0px 0px 1.6px var(--grey-input) inset;
+  border-radius: 4px;
+  background: var(--pure-white-base);
+
+  display: flex;
+}
+
+.form-input input {
+  flex: 1 1 100%;
+  padding: 12px;
+  background: transparent;
+  font-size: 16px;
+}
+
+button.password-toggler {
+  padding: 12px;
+  background: transparent;
+
+  display: grid;
+  place-content: center;
+}
+
+:is(.form-label, span.errorMessage) {
+  font-size: 14px;
+}
+
+span.errorMessage {
+  color: var(--danger-base);
+}
+
+.form-input:has(input:focus) {
+  box-shadow: 0px 0px 0px 1.6px var(--blue-base) inset;
+}
+
+.form-input:has(input:focus) input {
+  color: var(--blue-base);
+}
+
+app-form-steps {
+  margin-bottom: 24px;
+  width: 100%;
+  
+  display: flex;
+  gap: 16px;
+}
+
+/*#endregion  */

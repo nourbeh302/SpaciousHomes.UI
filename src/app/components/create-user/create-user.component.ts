@@ -15,32 +15,40 @@ export class CreateUserComponent implements OnInit {
   emailInputError: boolean = false
   passwordInputError: boolean = false
   stepCounter: number = 1
+  passwordStrengthIndicator: string = "Empty"
 
   constructor(private userService: UserService, private route: Router) {
-    this.user.userId = ""
     this.user.email = ""
     this.user.password = ""
-    this.user.firstName = ""
-    this.user.lastName = ""
-    this.user.role = ""
   }
 
   ngOnInit(): void {
     this.user = this.userService.getUser()
     if (!this.user.role)
       this.route.navigate(['/register/createRole'])
-
-    console.log(this.user); //
   }
 
   assignUser(email: string, password: string) {
     this.userService.setEmail(email)
     this.userService.setPassword(password)
-    this.navigateToAdditionalInfoPage() // Go to next step
+    this.navigateToAdditionalInfoPage()
   }
 
   assignEmail(email: string): void {
     this.userService.setEmail(email)
+  }
+
+  showPasswordStrength(password: string): void {
+    if (password.length > 0 && password.length <= 7)
+      this.passwordStrengthIndicator = "Weak"
+    else if (password.length > 7 && password.length <= 14)
+      this.passwordStrengthIndicator = "Fair"
+    else if (password.length > 14 && password.length <= 20)
+      this.passwordStrengthIndicator = "Strong"
+    else if (password.length > 20 && password.length <= 32)
+      this.passwordStrengthIndicator = "Perfect"
+    else
+      this.passwordStrengthIndicator = "Empty"
   }
 
   togglePassword(): void {
