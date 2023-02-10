@@ -103,16 +103,3 @@
 .form-title p {
   margin-block: 4px 48px;
 }
-
-app-form-steps {
-  margin-top: 96px;
-  
-  display: flex;
-  gap: 16px;
-}
-
-@media only screen and (1200px <= width) {
-  app-form-steps {
-    margin-top: auto;
-  }
-}

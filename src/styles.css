@@ -13,6 +13,7 @@
   --grey-input: hsl(0, 0%, 80%);
 
   --pure-white-base: hsl(0, 0%, 100%);
+  --danger-base: hsl(0, 100%, 62%);
   
   --font-default: 'Roobert', sans-serif;
 }
@@ -53,6 +54,11 @@ a {
 :is(.display, .button) {
   letter-spacing: 2px;
   line-height: 1.1;
+}
+
+input {
+  outline: none;
+  border: none;
 }
 
 /*  */
@@ -123,6 +129,18 @@ a {
 
 button {
   border: none;
+}
+
+.button-group {
+  margin-top: 32px;
+  
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+}
+
+
+.button {
   border-radius: 4px;
   padding: 12px 32px;
   
@@ -156,6 +174,18 @@ button {
 
 .button-secondary:not(:disabled):hover {
   box-shadow: 0px 0px 0px 1.6px var(--black-base) inset;
+}
+
+@media only screen and (max-width: 525px) {
+  .button-group {
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .button {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /*#endregion */

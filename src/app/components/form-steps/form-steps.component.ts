@@ -1,5 +1,4 @@
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-steps',
@@ -8,18 +7,13 @@ import { Router } from '@angular/router';
 })
 export class FormStepsComponent implements OnInit {
 
-  url: string = ""
-  @Input() steps: number = 0
+  @Input() stepCounter: number = 0
 
-  constructor(private route: Router) { 
+  constructor() { 
   }
 
   ngOnInit(): void {
-    // this.url = this.route.url
-  }
-
-  ngOnChanges(): void {
-    // this.url = this.route.url
+    console.log(this.stepCounter);
   }
 
 }

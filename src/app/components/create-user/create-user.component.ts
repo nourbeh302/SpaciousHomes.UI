@@ -12,6 +12,9 @@ export class CreateUserComponent implements OnInit {
 
   @Input() user: User = new User()
   showPassword: boolean = false
+  emailInputError: boolean = false
+  passwordInputError: boolean = false
+  stepCounter: number = 1
 
   constructor(private userService: UserService, private route: Router) {
     this.user.userId = ""
@@ -24,9 +27,9 @@ export class CreateUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.userService.getUser()
-    if (!this.user.role) 
+    if (!this.user.role)
       this.route.navigate(['/register/createRole'])
-      
+
     console.log(this.user); //
   }
 
@@ -36,19 +39,33 @@ export class CreateUserComponent implements OnInit {
     this.navigateToAdditionalInfoPage() // Go to next step
   }
 
-  assignEmail(email: string) {
+  assignEmail(email: string): void {
     this.userService.setEmail(email)
   }
 
-  assignPassword(password: string) {
+  togglePassword(): void {
+    this.showPassword = !this.showPassword
+  }
+
+  assignPassword(password: string): void {
     this.userService.setPassword(password)
   }
 
-  navigateToAdditionalInfoPage() {
-    this.route.navigate(['/register/additionalInfo'], { state: this.user })
+  validatePasswordInput(password: string): void {
+    if (password.length < 8)
+      this.passwordInputError = true
+    else
+      this.passwordInputError = false
   }
 
-  togglePassword() {
-    this.showPassword = !this.showPassword
+  validateEmailInput(email: string): void {
+    if (!(email.includes("@") && email.length > 0))
+      this.emailInputError = true
+    else
+      this.emailInputError = false
+  }
+
+  navigateToAdditionalInfoPage(): void {
+    this.route.navigate(['/register/additionalInfo'], { state: this.user })
   }
 }
