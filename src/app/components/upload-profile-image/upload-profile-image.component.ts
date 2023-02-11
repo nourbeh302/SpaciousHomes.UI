@@ -14,12 +14,6 @@ export class UploadProfileImageComponent implements OnInit {
   stepCounter: number = 3
 
   constructor(private userService: UserService, private route: Router) { 
-    this.user.userId = ""
-    this.user.email = ""
-    this.user.password = ""
-    this.user.firstName = ""
-    this.user.lastName = ""
-    this.user.role = ""
     this.user.profileImage = ""
   }
 
