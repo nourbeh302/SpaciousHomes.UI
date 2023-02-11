@@ -1,6 +1,6 @@
 span {
   background: var(--grey-input);
-  width: 25%;
+  width: calc(100% / 3);
 
   height: 4px;
   border-radius: 16px;

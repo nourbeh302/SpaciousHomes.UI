@@ -13,6 +13,7 @@
   --grey-input: hsl(0, 0%, 80%);
 
   --pure-white-base: hsl(0, 0%, 100%);
+  --danger-base: hsl(0, 100%, 62%);
   
   --font-default: 'Roobert', sans-serif;
 }
@@ -53,6 +54,11 @@ a {
 :is(.display, .button) {
   letter-spacing: 2px;
   line-height: 1.1;
+}
+
+input {
+  outline: none;
+  border: none;
 }
 
 /*  */
@@ -123,6 +129,18 @@ a {
 
 button {
   border: none;
+}
+
+.button-group {
+  margin-top: 32px;
+  
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+}
+
+
+.button {
   border-radius: 4px;
   padding: 12px 32px;
   
@@ -158,4 +176,89 @@ button {
   box-shadow: 0px 0px 0px 1.6px var(--black-base) inset;
 }
 
+@media only screen and (max-width: 525px) {
+  .button-group {
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /*#endregion */
+
+/*#region Forms */
+
+.form-group {
+  margin-bottom: 32px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.form-field:has(.form-input input[required]) label::after {
+  content: "*";
+  display: inline;
+  color: var(--danger-base);
+  margin-left: 4px;
+  font-size: large;
+}
+
+.form-input {
+  width: 100%;
+  margin-block: 4px;
+  box-shadow: 0px 0px 0px 1.6px var(--grey-input) inset;
+  border-radius: 4px;
+  background: var(--pure-white-base);
+
+  display: flex;
+}
+
+.form-input input {
+  flex: 1 1 100%;
+  padding: 12px;
+  background: transparent;
+  font-size: 16px;
+}
+
+button.password-toggler {
+  padding: 12px;
+  background: transparent;
+
+  display: grid;
+  place-content: center;
+}
+
+:is(.form-label, span.errorMessage) {
+  font-size: 14px;
+}
+
+span.errorMessage {
+  color: var(--danger-base);
+}
+
+.form-input:has(input:focus) {
+  box-shadow: 0px 0px 0px 1.6px var(--blue-base) inset;
+}
+
+.form-input:has(input:focus) input {
+  color: var(--blue-base);
+}
+
+app-form-steps {
+  margin-bottom: 24px;
+  width: 100%;
+  
+  display: flex;
+  gap: 16px;
+}
+
+/*#endregion  */

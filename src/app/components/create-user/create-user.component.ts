@@ -12,43 +12,68 @@ export class CreateUserComponent implements OnInit {
 
   @Input() user: User = new User()
   showPassword: boolean = false
+  emailInputError: boolean = false
+  passwordInputError: boolean = false
+  stepCounter: number = 1
+  passwordStrengthIndicator: string = "Empty"
 
   constructor(private userService: UserService, private route: Router) {
-    this.user.userId = ""
     this.user.email = ""
     this.user.password = ""
-    this.user.firstName = ""
-    this.user.lastName = ""
-    this.user.role = ""
   }
 
   ngOnInit(): void {
     this.user = this.userService.getUser()
-    if (!this.user.role) 
+    if (!this.user.role)
       this.route.navigate(['/register/createRole'])
-      
-    console.log(this.user); //
   }
 
   assignUser(email: string, password: string) {
     this.userService.setEmail(email)
     this.userService.setPassword(password)
-    this.navigateToAdditionalInfoPage() // Go to next step
+    this.navigateToAdditionalInfoPage()
   }
 
-  assignEmail(email: string) {
+  assignEmail(email: string): void {
     this.userService.setEmail(email)
   }
 
-  assignPassword(password: string) {
+  showPasswordStrength(password: string): void {
+    if (password.length > 0 && password.length <= 7)
+      this.passwordStrengthIndicator = "Weak"
+    else if (password.length > 7 && password.length <= 14)
+      this.passwordStrengthIndicator = "Fair"
+    else if (password.length > 14 && password.length <= 20)
+      this.passwordStrengthIndicator = "Strong"
+    else if (password.length > 20 && password.length <= 32)
+      this.passwordStrengthIndicator = "Perfect"
+    else
+      this.passwordStrengthIndicator = "Empty"
+  }
+
+  togglePassword(): void {
+    this.showPassword = !this.showPassword
+  }
+
+  assignPassword(password: string): void {
     this.userService.setPassword(password)
   }
 
-  navigateToAdditionalInfoPage() {
-    this.route.navigate(['/register/additionalInfo'], { state: this.user })
+  validatePasswordInput(password: string): void {
+    if (password.length < 8)
+      this.passwordInputError = true
+    else
+      this.passwordInputError = false
   }
 
-  togglePassword() {
-    this.showPassword = !this.showPassword
+  validateEmailInput(email: string): void {
+    if (!(email.includes("@") && email.length > 0))
+      this.emailInputError = true
+    else
+      this.emailInputError = false
+  }
+
+  navigateToAdditionalInfoPage(): void {
+    this.route.navigate(['/register/additionalInfo'], { state: this.user })
   }
 }

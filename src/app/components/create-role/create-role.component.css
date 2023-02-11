@@ -12,7 +12,6 @@
 .card label {
   height: 100%;
   cursor: pointer;
-  --color-base: #DFDFDF;
 
   display: grid;
   grid-template-rows: 3fr 1fr;
@@ -20,7 +19,7 @@
 
   padding: 16px;
 
-  box-shadow: 0px 0px 0px 1.6px var(--color-base) inset;
+  box-shadow: 0px 0px 0px 1.6px var(--grey-input) inset;
   border-radius: 8px;
 }
 
@@ -77,12 +76,4 @@ span.input-checked {
 
 .card:has(input:checked) .card-image img {
   scale: 105%;
-}
-
-.button-group {
-  margin-top: 32px;
-  
-  display: flex;
-  justify-content: center;
-  gap: 2em;
 }

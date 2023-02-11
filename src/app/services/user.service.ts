@@ -37,4 +37,8 @@ export class UserService {
   setArea(area: string): void {
     this.user.area = area
   }
+
+  setProfileImage(profileImage: string): void {
+    this.user.profileImage = profileImage
+  }
 }

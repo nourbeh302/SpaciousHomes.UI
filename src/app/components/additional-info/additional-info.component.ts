@@ -11,22 +11,21 @@ import { UserService } from 'src/app/services/user.service';
 export class AdditionalInfoComponent implements OnInit {
 
   @Input() user: User = new User()
+  firstNameInputError: boolean = false
+  lastNameInputError: boolean = false
+  areaInputError: boolean = false
+  stepCounter: number = 2
 
   constructor(private userService: UserService, private route: Router) { 
-    this.user.userId = ""
-    this.user.email = ""
-    this.user.password = ""
     this.user.firstName = ""
     this.user.lastName = ""
-    this.user.role = ""
+    this.user.area = ""
   }
 
   ngOnInit(): void {
     this.user = this.userService.getUser()
     if (!this.user.role) 
       this.route.navigate(['/register/createRole'])
-
-    console.log(this.user); //
   }
 
   assignUser(firstName: string, lastName: string, area: string) {
@@ -46,6 +45,20 @@ export class AdditionalInfoComponent implements OnInit {
 
   assignArea(area: string) {
     this.userService.setArea(area)
+  }
+
+  validateFirstName(firstName: string) {
+    if (firstName.length < 3)
+      this.firstNameInputError = true
+    else
+      this.firstNameInputError = false
+  }
+
+  validateLastName(lastName: string) {
+    if (lastName.length < 3)
+      this.lastNameInputError = true
+    else
+      this.lastNameInputError = false
   }
 
   navigateToUploadProfileImagePage() {

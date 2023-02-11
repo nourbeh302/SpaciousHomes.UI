@@ -18,10 +18,9 @@ export class CreateRoleComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.userService.getUser()
-    console.log(this.user); //
   }
 
-  assignRole(role: string) {
+  assignRole(role: string): void {
     this.userService.setRole(role)
     // Go to next step
     if (role == 'Enterprise'.toLocaleLowerCase())
@@ -30,11 +29,11 @@ export class CreateRoleComponent implements OnInit {
       this.navigateToCreateUserPage()
   }
   
-  navigateToCreateUserPage() {
+  navigateToCreateUserPage(): void {
     this.route.navigate(['/register/createUser'], { state: this.user })
   }
   
-  navigateToCreateEnterpriseUserPage() {
+  navigateToCreateEnterpriseUserPage(): void {
     this.route.navigate(['/register/createEnterpriseUser'], { state: this.user })
   }
 

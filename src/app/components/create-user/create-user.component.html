@@ -1,11 +1,35 @@
+<app-form-steps [stepCounter]="stepCounter"></app-form-steps>
+
 <div class="form-group">
   <div class="form-field">
-    <input type="text" placeholder="johndoe123@xyz.com" [(ngModel)]="user.email">
+    <label class="form-label" [for]="user.email">Your Email Address</label>
+    <div class="form-input">
+      <input type="email" placeholder="johndoe123@xyz.com" [(ngModel)]="user.email"
+        (blur)="validateEmailInput(user.email)" required>
+    </div>
+    <span class="errorMessage" *ngIf="emailInputError">Please enter a valid email address</span>
   </div>
 
-  <div class="form-field password-field">
-    <input [type]="showPassword ? 'text' : 'password'" placeholder="P@zzW0Rd" [(ngModel)]="user.password">
-    <button (click)="togglePassword()">SP</button>
+  <div class="form-field">
+    <label class="form-label" [for]="user.password">Your Password</label>
+    <div class="form-input">
+      <input [type]="showPassword ? 'text' : 'password'" placeholder="eatenByMYdoG2023" [(ngModel)]="user.password"
+        (blur)="validatePasswordInput(user.password)" (ngModelChange)="showPasswordStrength(user.password)" required>
+      <button class="password-toggler" (click)="togglePassword()">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M3.25909 11.6021C3.94254 8.32689 6.79437 6 10 6C13.2057 6 16.0574 8.32688 16.7409 11.6021C16.7974 11.8725 17.0622 12.0459 17.3325 11.9895C17.6029 11.933 17.7763 11.6682 17.7199 11.3979C16.9425 7.67312 13.6934 5 10 5C6.3066 5 3.05742 7.67311 2.28017 11.3979C2.22377 11.6682 2.39718 11.933 2.6675 11.9895C2.93782 12.0459 3.20268 11.8725 3.25909 11.6021ZM10 8C8.067 8 6.5 9.567 6.5 11.5C6.5 13.433 8.067 15 10 15C11.933 15 13.5 13.433 13.5 11.5C13.5 9.567 11.933 8 10 8ZM7.5 11.5C7.5 10.1193 8.61929 9 10 9C11.3807 9 12.5 10.1193 12.5 11.5C12.5 12.8807 11.3807 14 10 14C8.61929 14 7.5 12.8807 7.5 11.5Z"
+            fill="var(--grey-base)" />
+        </svg>
+      </button>
+    </div>
+    <div class="password-strength">
+      <div class="bars-container">
+        <span [class]="passwordStrengthIndicator.toLowerCase()"></span>
+      </div>
+      <p class="password-text display display-06 text-uppercase color-black">{{ passwordStrengthIndicator }}</p>
+    </div>
+    <span class="errorMessage" *ngIf="passwordInputError">Your password should be at least 8 letters</span>
   </div>
 </div>
 
@@ -16,7 +40,19 @@
 </a>
 
 <div class="button-group">
-  <button class="button text-uppercase" (click)="assignUser(user.email, user.password)" [disabled]="!user.email || !user.password">
+  <a routerLink="../createRole">
+    <button class="button button-secondary text-uppercase color-white font-normal">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M13.5 8.5C13.7761 8.5 14 8.27614 14 8C14 7.72386 13.7761 7.5 13.5 7.5L3.80298 7.5L7.83448 3.87165C8.03974 3.68692 8.05638 3.37078 7.87165 3.16552C7.68692 2.96027 7.37077 2.94363 7.16552 3.12836L2.16552 7.62835C2.06016 7.72317 2 7.85826 2 8C2 8.14174 2.06016 8.27683 2.16552 8.37165L7.16552 12.8716C7.37077 13.0564 7.68692 13.0397 7.87165 12.8345C8.05638 12.6292 8.03974 12.3131 7.83448 12.1283L3.80298 8.5L13.5 8.5Z"
+          fill="var(--white-base)" />
+      </svg>
+      <span>Back</span>
+    </button>
+  </a>
+  <button class="button button-primary text-uppercase color-white font-normal"
+    (click)="assignUser(user.email, user.password)"
+    [disabled]="(!user.email || !user.password) || (emailInputError || passwordInputError)">
     <span>Next</span>
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -24,14 +60,4 @@
         fill="var(--white-base)" />
     </svg>
   </button>
-  <a routerLink="../createRole">
-    <button class="button text-uppercase">
-      <span>Go back</span>
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M2.5 7.50001C2.22386 7.50001 2 7.72386 2 8.00001C2 8.27615 2.22386 8.50001 2.5 8.50001L12.197 8.5L8.16552 12.1284C7.96026 12.3131 7.94362 12.6292 8.12835 12.8345C8.31308 13.0397 8.62923 13.0564 8.83448 12.8717L13.8345 8.37165C13.9398 8.27683 14 8.14175 14 8C14 7.85826 13.9398 7.72318 13.8345 7.62836L8.83448 3.12836C8.62923 2.94363 8.31308 2.96027 8.12835 3.16552C7.94362 3.37078 7.96026 3.68692 8.16552 3.87165L12.197 7.5L2.5 7.50001Z"
-          fill="var(--white-base)" />
-      </svg>
-    </button>
-  </a>
 </div>
