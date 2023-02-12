@@ -7,6 +7,8 @@ export class User {
   role: string
   area: string
   profileImage: string
+  age: number
+  gender: boolean // true for female; false for male
 
   constructor() {
     this.userId = ""
@@ -17,5 +19,7 @@ export class User {
     this.role = ""
     this.area = ""
     this.profileImage = ""
+    this.age = 0
+    this.gender = true
   }
 }

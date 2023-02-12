@@ -20,6 +20,8 @@ export class AdditionalInfoComponent implements OnInit {
     this.user.firstName = ""
     this.user.lastName = ""
     this.user.area = ""
+    this.user.gender = false
+    this.user.age = 0
   }
 
   ngOnInit(): void {

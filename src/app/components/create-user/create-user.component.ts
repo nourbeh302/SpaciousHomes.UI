@@ -24,6 +24,7 @@ export class CreateUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.userService.getUser()
+    this.showPasswordStrength(this.user.password)
     if (!this.user.role)
       this.route.navigate(['/register/createRole'])
   }
@@ -67,7 +68,8 @@ export class CreateUserComponent implements OnInit {
   }
 
   validateEmailInput(email: string): void {
-    if (!(email.includes("@") && email.length > 0))
+    var validEmailFormatRegex: RegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    if (!email.match(validEmailFormatRegex))
       this.emailInputError = true
     else
       this.emailInputError = false
