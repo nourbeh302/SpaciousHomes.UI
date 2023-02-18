@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, RouterOutlet, Routes } from '@angular/router';
 
-import { RegisterComponent } from './pages/register/register.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { NotFoundComponent } from './auth/not-found/not-found.component';
 
 import { CreateRoleComponent } from './components/create-role/create-role.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
