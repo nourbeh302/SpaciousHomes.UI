@@ -2,6 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  font-size: 12px;
 }
 
 .bars-container {
@@ -18,6 +20,8 @@
   border-radius: inherit;
   display: block;
   width: 0%;
+
+  transition: all 250ms ease-in-out;
 }
 
 .bars-container span.weak {

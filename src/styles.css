@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
 :root {
   --blue-base: hsl(216, 100%, 42%);
   --white-base: hsl(0, 0%, 95%);
@@ -15,7 +17,8 @@
   --pure-white-base: hsl(0, 0%, 100%);
   --danger-base: hsl(0, 100%, 62%);
   
-  --font-default: 'Roobert', sans-serif;
+  --font-default: 'Plus Jakarta Sans', sans-serif;
+
 }
 
 *,
@@ -56,7 +59,7 @@ a {
   line-height: 1.1;
 }
 
-input {
+:is(input, select, option) {
   outline: none;
   border: none;
 }
@@ -173,7 +176,7 @@ button {
 }
 
 .button-secondary:not(:disabled):hover {
-  box-shadow: 0px 0px 0px 1.6px var(--black-base) inset;
+  box-shadow: 0px 0px 0px 1.0px var(--black-base) inset;
 }
 
 @media only screen and (max-width: 525px) {
@@ -200,6 +203,19 @@ button {
   gap: 16px;
 }
 
+.form-splitter {
+  display: flex;
+  flex-wrap: nowrap;
+
+  gap: 1em 2em;
+}
+
+@media only screen and (width < 625px) {
+  .form-splitter {
+    flex-wrap: wrap;
+  }
+}
+
 .form-field {
   width: 100%;
 }
@@ -215,18 +231,30 @@ button {
 .form-input {
   width: 100%;
   margin-block: 4px;
-  box-shadow: 0px 0px 0px 1.6px var(--grey-input) inset;
+  box-shadow: 0px 0px 0px 1.0px var(--grey-input) inset;
   border-radius: 4px;
   background: var(--pure-white-base);
 
   display: flex;
 }
 
-.form-input input {
+.form-input :is(input, select) {
   flex: 1 1 100%;
   padding: 12px;
   background: transparent;
-  font-size: 16px;
+  font-size: 14px;
+}
+
+.form-input :is(select) {
+  padding: 11px 8px;
+}
+
+.form-input select option:nth-child(odd) {
+  background: var(--white-base);
+}
+
+.form-input input:focus-visible {
+  caret-color: var(--blue-base);
 }
 
 button.password-toggler {
@@ -238,15 +266,19 @@ button.password-toggler {
 }
 
 :is(.form-label, span.errorMessage) {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 span.errorMessage {
   color: var(--danger-base);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
 }
 
 .form-input:has(input:focus) {
-  box-shadow: 0px 0px 0px 1.6px var(--blue-base) inset;
+  box-shadow: 0px 0px 0px 1.0px var(--blue-base) inset;
 }
 
 .form-input:has(input:focus) input {
@@ -254,7 +286,7 @@ span.errorMessage {
 }
 
 app-form-steps {
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   width: 100%;
   
   display: flex;

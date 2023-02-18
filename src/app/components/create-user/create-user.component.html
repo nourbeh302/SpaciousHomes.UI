@@ -2,19 +2,27 @@
 
 <div class="form-group">
   <div class="form-field">
-    <label class="form-label" [for]="user.email">Your Email Address</label>
+    <label class="form-label display text-uppercase color-grey" [for]="user.email">Email Address</label>
     <div class="form-input">
       <input type="email" placeholder="johndoe123@xyz.com" [(ngModel)]="user.email"
-        (blur)="validateEmailInput(user.email)" required>
+        (ngModelChange)="validateEmailInput(user.email)" required>
     </div>
-    <span class="errorMessage" *ngIf="emailInputError">Please enter a valid email address</span>
+    <span class="errorMessage" *ngIf="emailInputError">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M9.5617 3.26158C9.75085 2.91248 10.2519 2.91251 10.441 3.26163L16.9415 15.2626C17.122 15.5957 16.8807 16.0007 16.5019 16.0007H3.49917C3.12027 16.0007 2.87905 15.5957 3.05955 15.2625L9.5617 3.26158ZM11.3203 2.78534C10.7529 1.73798 9.2499 1.7379 8.68246 2.78521L2.18031 14.7861C1.6388 15.7856 2.36245 17.0007 3.49917 17.0007H16.5019C17.6385 17.0007 18.3622 15.7857 17.8208 14.7863L11.3203 2.78534ZM10.4997 7.5C10.4997 7.22386 10.2759 7 9.99972 7C9.72357 7 9.49972 7.22386 9.49972 7.5V11.5C9.49972 11.7761 9.72357 12 9.99972 12C10.2759 12 10.4997 11.7761 10.4997 11.5V7.5ZM10.7497 13.75C10.7497 14.1642 10.4139 14.5 9.99972 14.5C9.5855 14.5 9.24972 14.1642 9.24972 13.75C9.24972 13.3358 9.5855 13 9.99972 13C10.4139 13 10.7497 13.3358 10.7497 13.75Z"
+          fill="var(--danger-base)" />
+      </svg>
+      <span>Please enter a valid email address</span>
+    </span>
   </div>
 
   <div class="form-field">
-    <label class="form-label" [for]="user.password">Your Password</label>
+    <label class="form-label display text-uppercase color-grey" [for]="user.password">Password</label>
     <div class="form-input">
       <input [type]="showPassword ? 'text' : 'password'" placeholder="eatenByMYdoG2023" [(ngModel)]="user.password"
-        (blur)="validatePasswordInput(user.password)" (ngModelChange)="showPasswordStrength(user.password)" required>
+        (ngModelChange)="validatePasswordInput(user.password)" (ngModelChange)="showPasswordStrength(user.password)"
+        [maxlength]="32" required>
       <button class="password-toggler" (click)="togglePassword()">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -27,9 +35,16 @@
       <div class="bars-container">
         <span [class]="passwordStrengthIndicator.toLowerCase()"></span>
       </div>
-      <p class="password-text display display-06 text-uppercase color-black">{{ passwordStrengthIndicator }}</p>
+      <p class="password-text display text-uppercase color-grey">{{ passwordStrengthIndicator }}</p>
     </div>
-    <span class="errorMessage" *ngIf="passwordInputError">Your password should be at least 8 letters</span>
+    <span class="errorMessage" *ngIf="passwordInputError">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M9.5617 3.26158C9.75085 2.91248 10.2519 2.91251 10.441 3.26163L16.9415 15.2626C17.122 15.5957 16.8807 16.0007 16.5019 16.0007H3.49917C3.12027 16.0007 2.87905 15.5957 3.05955 15.2625L9.5617 3.26158ZM11.3203 2.78534C10.7529 1.73798 9.2499 1.7379 8.68246 2.78521L2.18031 14.7861C1.6388 15.7856 2.36245 17.0007 3.49917 17.0007H16.5019C17.6385 17.0007 18.3622 15.7857 17.8208 14.7863L11.3203 2.78534ZM10.4997 7.5C10.4997 7.22386 10.2759 7 9.99972 7C9.72357 7 9.49972 7.22386 9.49972 7.5V11.5C9.49972 11.7761 9.72357 12 9.99972 12C10.2759 12 10.4997 11.7761 10.4997 11.5V7.5ZM10.7497 13.75C10.7497 14.1642 10.4139 14.5 9.99972 14.5C9.5855 14.5 9.24972 14.1642 9.24972 13.75C9.24972 13.3358 9.5855 13 9.99972 13C10.4139 13 10.7497 13.3358 10.7497 13.75Z"
+          fill="var(--danger-base)" />
+      </svg>
+      <span>Your password should be at least 8 letters</span>
+    </span>
   </div>
 </div>
 
