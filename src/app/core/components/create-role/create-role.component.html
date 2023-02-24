@@ -19,16 +19,16 @@
     </span>
   </div>
   <div class="card">
-    <label for="enterprise" (click)="user.role = 'enterprise'">
+    <label for="corporation" (click)="user.role = 'corporation'">
       <div class="card-image">
-        <img src="../../../assets/svgs/enterprise-card.svg" alt="enterprise" srcset="">
+        <img src="../../../assets/svgs/enterprise-card.svg" alt="corporation" srcset="">
       </div>
       <div class="card-body">
-        <h2 class="color-black">Enterprise</h2>
+        <h2 class="color-black">Corporation</h2>
         <p class="color-grey font-normal">This user has the capability of posting unlimited ads.</p>
       </div>
     </label>
-    <input type="radio" name="role" id="enterprise" [checked]="user.role == 'enterprise'">
+    <input type="radio" name="role" id="corporation" [checked]="user.role == 'corporation'">
     <span class="input-checked">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path

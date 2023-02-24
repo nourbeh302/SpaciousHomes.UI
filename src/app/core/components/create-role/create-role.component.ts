@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/User';
-import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/clients/user/models/User';
+import { UserService } from 'src/app/clients/user/services/user.service';
 
 @Component({
   selector: 'app-create-role',
@@ -23,8 +23,8 @@ export class CreateRoleComponent implements OnInit {
   assignRole(role: string): void {
     this.userService.setRole(role)
     // Go to next step
-    if (role == 'Enterprise'.toLocaleLowerCase())
-      this.navigateToCreateEnterpriseUserPage() 
+    if (role == 'Corporation'.toLocaleLowerCase())
+      this.navigateToCreateCorporationPage() 
     else
       this.navigateToCreateUserPage()
   }
@@ -33,8 +33,8 @@ export class CreateRoleComponent implements OnInit {
     this.route.navigate(['/register/createUser'], { state: this.user })
   }
   
-  navigateToCreateEnterpriseUserPage(): void {
-    this.route.navigate(['/register/createEnterpriseUser'], { state: this.user })
+  navigateToCreateCorporationPage(): void {
+    this.route.navigate(['/register/createCorporation'], { state: this.user })
   }
 
 }

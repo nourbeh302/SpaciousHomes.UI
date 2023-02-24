@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/User';
-import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/clients/user/models/User';
+import { UserService } from 'src/app/clients/user/services/user.service';
+import { Gender } from 'src/app/clients/user/models/utilities/Gender';
 
 @Component({
   selector: 'app-additional-info',
@@ -20,7 +21,7 @@ export class AdditionalInfoComponent implements OnInit {
     this.user.firstName = ""
     this.user.lastName = ""
     this.user.area = ""
-    this.user.gender = false
+    this.user.gender = Gender.male
     this.user.age = 0
   }
 

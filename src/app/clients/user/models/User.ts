@@ -13,7 +13,8 @@ export class User {
     public area: string = "",
     public profileImage: string = "",
     public gender: Gender = Gender.male,
-    public phoneNumber: string = ""
+    public phoneNumber: string = "",
+    public age: number = 0
 
   ) {}
 

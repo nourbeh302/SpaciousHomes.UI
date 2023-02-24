@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, RouterOutlet, Routes } from '@angular/router';
 
-import { RegisterComponent } from './auth/register/register.component';
-import { NotFoundComponent } from './auth/not-found/not-found.component';
+import { RegisterComponent } from './core/auth/register/register.component';
+import { NotFoundComponent } from './core/auth/not-found/not-found.component';
 
-import { CreateRoleComponent } from './components/create-role/create-role.component';
-import { CreateUserComponent } from './components/create-user/create-user.component';
-import { AdditionalInfoComponent } from './components/additional-info/additional-info.component';
-import { UploadProfileImageComponent } from './components/upload-profile-image/upload-profile-image.component';
+import { CreateRoleComponent } from './core/components/create-role/create-role.component';
+import { CreateUserComponent } from './core/components/create-user/create-user.component';
+import { AdditionalInfoComponent } from './core/components/additional-info/additional-info.component';
+import { UploadProfileImageComponent } from './core/components/upload-profile-image/upload-profile-image.component';
 
 const routes: Routes = [
   {
