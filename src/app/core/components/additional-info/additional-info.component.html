@@ -55,9 +55,9 @@
   </div>
 
   <div class="form-field">
-    <label class="form-label display text-uppercase color-grey" [for]="user.area">Area [Optional]</label>
+    <label class="form-label display text-uppercase color-grey" [for]="user.userLocation">Area [Optional]</label>
     <div class="form-input">
-      <input type="text" placeholder="Anywhere" [(ngModel)]="user.area">
+      <input type="text" placeholder="Anywhere" [(ngModel)]="user.userLocation">
     </div>
   </div>
 </div>
@@ -80,7 +80,7 @@
     </button>
   </a>
   <button class="button button-primary text-uppercase color-white font-normal"
-    (click)="assignUser(user.firstName, user.lastName, user.area)"
+    (click)="assignUser(user.firstName, user.lastName, user.userLocation)"
     [disabled]="(!user.firstName || !user.lastName) || (firstNameInputError || lastNameInputError)">
     <span>Next</span>
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">

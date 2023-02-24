@@ -1,1 +1,78 @@
-<p>create-corporation works!</p>
+<app-form-steps [stepCounter]="stepCounter"></app-form-steps>
+
+<div class="form-group">
+  <div class="form-field">
+    <label class="form-label display text-uppercase color-grey" [for]="corporation.corpEmail">Email Address</label>
+    <div class="form-input">
+      <input type="email" placeholder="johndoe123@xyz.com" [(ngModel)]="corporation.corpEmail"
+        (ngModelChange)="validateEmailInput(corporation.corpEmail)" required>
+    </div>
+    <span class="errorMessage" *ngIf="emailInputError">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M9.5617 3.26158C9.75085 2.91248 10.2519 2.91251 10.441 3.26163L16.9415 15.2626C17.122 15.5957 16.8807 16.0007 16.5019 16.0007H3.49917C3.12027 16.0007 2.87905 15.5957 3.05955 15.2625L9.5617 3.26158ZM11.3203 2.78534C10.7529 1.73798 9.2499 1.7379 8.68246 2.78521L2.18031 14.7861C1.6388 15.7856 2.36245 17.0007 3.49917 17.0007H16.5019C17.6385 17.0007 18.3622 15.7857 17.8208 14.7863L11.3203 2.78534ZM10.4997 7.5C10.4997 7.22386 10.2759 7 9.99972 7C9.72357 7 9.49972 7.22386 9.49972 7.5V11.5C9.49972 11.7761 9.72357 12 9.99972 12C10.2759 12 10.4997 11.7761 10.4997 11.5V7.5ZM10.7497 13.75C10.7497 14.1642 10.4139 14.5 9.99972 14.5C9.5855 14.5 9.24972 14.1642 9.24972 13.75C9.24972 13.3358 9.5855 13 9.99972 13C10.4139 13 10.7497 13.3358 10.7497 13.75Z"
+          fill="var(--danger-base)" />
+      </svg>
+      <span>Please enter a valid email address</span>
+    </span>
+  </div>
+
+  <div class="form-field">
+    <label class="form-label display text-uppercase color-grey" [for]="corporation.corpPassword">Password</label>
+    <div class="form-input">
+      <input [type]="showPassword ? 'text' : 'password'" placeholder="eatenByMYdoG2023" [(ngModel)]="corporation.corpPassword"
+        (ngModelChange)="validatePasswordInput(corporation.corpPassword)" (ngModelChange)="showPasswordStrength(corporation.corpPassword)"
+        [maxlength]="32" required>
+      <button class="password-toggler" (click)="togglePassword()">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M3.25909 11.6021C3.94254 8.32689 6.79437 6 10 6C13.2057 6 16.0574 8.32688 16.7409 11.6021C16.7974 11.8725 17.0622 12.0459 17.3325 11.9895C17.6029 11.933 17.7763 11.6682 17.7199 11.3979C16.9425 7.67312 13.6934 5 10 5C6.3066 5 3.05742 7.67311 2.28017 11.3979C2.22377 11.6682 2.39718 11.933 2.6675 11.9895C2.93782 12.0459 3.20268 11.8725 3.25909 11.6021ZM10 8C8.067 8 6.5 9.567 6.5 11.5C6.5 13.433 8.067 15 10 15C11.933 15 13.5 13.433 13.5 11.5C13.5 9.567 11.933 8 10 8ZM7.5 11.5C7.5 10.1193 8.61929 9 10 9C11.3807 9 12.5 10.1193 12.5 11.5C12.5 12.8807 11.3807 14 10 14C8.61929 14 7.5 12.8807 7.5 11.5Z"
+            fill="var(--grey-base)" />
+        </svg>
+      </button>
+    </div>
+    <div class="password-strength">
+      <div class="bars-container">
+        <span [class]="passwordStrengthIndicator.toLowerCase()"></span>
+      </div>
+      <p class="password-text display text-uppercase color-grey">{{ passwordStrengthIndicator }}</p>
+    </div>
+    <span class="errorMessage" *ngIf="passwordInputError">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M9.5617 3.26158C9.75085 2.91248 10.2519 2.91251 10.441 3.26163L16.9415 15.2626C17.122 15.5957 16.8807 16.0007 16.5019 16.0007H3.49917C3.12027 16.0007 2.87905 15.5957 3.05955 15.2625L9.5617 3.26158ZM11.3203 2.78534C10.7529 1.73798 9.2499 1.7379 8.68246 2.78521L2.18031 14.7861C1.6388 15.7856 2.36245 17.0007 3.49917 17.0007H16.5019C17.6385 17.0007 18.3622 15.7857 17.8208 14.7863L11.3203 2.78534ZM10.4997 7.5C10.4997 7.22386 10.2759 7 9.99972 7C9.72357 7 9.49972 7.22386 9.49972 7.5V11.5C9.49972 11.7761 9.72357 12 9.99972 12C10.2759 12 10.4997 11.7761 10.4997 11.5V7.5ZM10.7497 13.75C10.7497 14.1642 10.4139 14.5 9.99972 14.5C9.5855 14.5 9.24972 14.1642 9.24972 13.75C9.24972 13.3358 9.5855 13 9.99972 13C10.4139 13 10.7497 13.3358 10.7497 13.75Z"
+          fill="var(--danger-base)" />
+      </svg>
+      <span>Your password should be at least 8 letters</span>
+    </span>
+  </div>
+</div>
+
+<a class="login-cta display-05 font-normal" routerLink="#">
+  <small>
+    Already have account? <span class="color-blue">Sign in</span>
+  </small>
+</a>
+
+<div class="button-group">
+  <a routerLink="../createRole">
+    <button class="button button-secondary text-uppercase color-white font-normal">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M13.5 8.5C13.7761 8.5 14 8.27614 14 8C14 7.72386 13.7761 7.5 13.5 7.5L3.80298 7.5L7.83448 3.87165C8.03974 3.68692 8.05638 3.37078 7.87165 3.16552C7.68692 2.96027 7.37077 2.94363 7.16552 3.12836L2.16552 7.62835C2.06016 7.72317 2 7.85826 2 8C2 8.14174 2.06016 8.27683 2.16552 8.37165L7.16552 12.8716C7.37077 13.0564 7.68692 13.0397 7.87165 12.8345C8.05638 12.6292 8.03974 12.3131 7.83448 12.1283L3.80298 8.5L13.5 8.5Z"
+          fill="var(--white-base)" />
+      </svg>
+      <span>Back</span>
+    </button>
+  </a>
+  <button class="button button-primary text-uppercase color-white font-normal"
+    (click)="assignUser(corporation.corpEmail, corporation.corpPassword)"
+    [disabled]="(!corporation.corpEmail || !corporation.corpPassword) || (emailInputError || passwordInputError)">
+    <span>Next</span>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M2.5 7.50001C2.22386 7.50001 2 7.72386 2 8.00001C2 8.27615 2.22386 8.50001 2.5 8.50001L12.197 8.5L8.16552 12.1284C7.96026 12.3131 7.94362 12.6292 8.12835 12.8345C8.31308 13.0397 8.62923 13.0564 8.83448 12.8717L13.8345 8.37165C13.9398 8.27683 14 8.14175 14 8C14 7.85826 13.9398 7.72318 13.8345 7.62836L8.83448 3.12836C8.62923 2.94363 8.31308 2.96027 8.12835 3.16552C7.94362 3.37078 7.96026 3.68692 8.16552 3.87165L12.197 7.5L2.5 7.50001Z"
+        fill="var(--white-base)" />
+    </svg>
+  </button>
+</div>

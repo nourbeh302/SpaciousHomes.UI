@@ -10,7 +10,7 @@ export class User {
     public firstName: string = "",
     public lastName: string = "",
     public role: string = "",
-    public area: string = "",
+    public userLocation: string = "",
     public profileImage: string = "",
     public gender: Gender = Gender.male,
     public phoneNumber: string = "",

@@ -17,6 +17,7 @@ const routes: Routes = [
       { path: "createUser", component: CreateUserComponent, },
       { path: "additionalInfo", component: AdditionalInfoComponent, },
       { path: "uploadProfileImage", component: UploadProfileImageComponent, },
+      
     ]
   },
   { path: "", redirectTo: "register/createRole", pathMatch: "full" }, // Homepage

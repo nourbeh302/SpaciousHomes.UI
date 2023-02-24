@@ -34,8 +34,8 @@ export class UserService {
     this.user.lastName = lastName
   }
 
-  setArea(area: string): void {
-    this.user.area = area
+  setArea(location: string): void {
+    this.user.userLocation = location
   }
 
   setProfileImage(profileImage: string): void {

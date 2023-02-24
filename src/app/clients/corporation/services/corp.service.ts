@@ -3,9 +3,47 @@ import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 import { Corporation } from "../models/Corporation";
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class CorpService
 {
+
+    corporation: Corporation = new Corporation()
+
+    constructor() { }
+  
+    getCorp(): Corporation {
+      return this.corporation
+    }
+  
+    setRole(role: string): void {
+      this.corporation.role = role
+    }
+  
+    setEmail(email: string): void {
+      this.corporation.corpEmail = email
+    }
+  
+    setPassword(password: string): void {
+      this.corporation.corpPassword = password
+    }
+  
+    setcorpName(firstName: string): void {
+      this.corporation.corpName = firstName
+    }
+  
+    // setLastName(lastName: string): void {
+    //   this.corporation.lastName = lastName
+    // }
+  
+    setArea(area: string): void {
+      this.corporation.corpLocation = area
+    }
+  
+    // setProfileImage(profileImage: string): void {
+    //   this.corporation.profileImage = profileImage
+    // }
 
     // corpList:Corporation[] = [
     //     new Corporation('101', 'Mohab'),

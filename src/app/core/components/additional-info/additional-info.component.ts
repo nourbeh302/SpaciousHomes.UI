@@ -20,7 +20,7 @@ export class AdditionalInfoComponent implements OnInit {
   constructor(private userService: UserService, private route: Router) { 
     this.user.firstName = ""
     this.user.lastName = ""
-    this.user.area = ""
+    this.user.userLocation = ""
     this.user.gender = Gender.male
     this.user.age = 0
   }
@@ -46,8 +46,8 @@ export class AdditionalInfoComponent implements OnInit {
     this.userService.setLastName(lastName)
   }
 
-  assignArea(area: string) {
-    this.userService.setArea(area)
+  assignArea(location: string) {
+    this.userService.setArea(location)
   }
 
   validateFirstName(firstName: string) {

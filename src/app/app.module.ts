@@ -13,6 +13,7 @@ import { AdditionalInfoComponent } from './core/components/additional-info/addit
 import { UploadProfileImageComponent } from './core/components/upload-profile-image/upload-profile-image.component';
 import { NotFoundComponent } from './core/auth/not-found/not-found.component';
 import { CorpModule } from './clients/corporation/corp.module';
+import { CreateCorporationComponent } from './core/components/create-corporation/create-corporation.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +26,15 @@ import { CorpModule } from './clients/corporation/corp.module';
     NotFoundComponent,
     CreateUserComponent,
     UploadProfileImageComponent,
+    CreateCorporationComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     CorpModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,12 @@
 export class Corporation {
     constructor(
-        public Id: string,
-        public Name: string,
-        public email: string,
-        public password: string,
-        public taxNumber: string
+        public corpId: string = "",
+        public corpName: string = "",
+        public corpEmail: string = "",
+        public corpPassword: string = "",
+        public taxNumber: string = "",
+        public role: string = "",
+        public corpLocation: string = "",
+        public corpProfileImage: string = ""
         ) { }
 }
